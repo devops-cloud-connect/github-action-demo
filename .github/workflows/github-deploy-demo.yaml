@@ -41,4 +41,7 @@ jobs:
       - name: Install python dependencies
         run: pip install -r ${GITHUB_WORKSPACE}/sdk/requirements.txt
 
+      - name: Execute deploy scripts
+        run: ${GITHUB_WORKSPACE}/contracts/deploy.sh
+
      

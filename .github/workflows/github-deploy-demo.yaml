@@ -41,7 +41,7 @@ jobs:
       - name: Install python dependencies
         run: pip install -r ${GITHUB_WORKSPACE}/sdk/requirements.txt
      
-      - name: update the privilege 
+      - name: Update the privilege 
         run: chmod +x ${GITHUB_WORKSPACE}/contracts/deploy.sh
         
       - name: Execute deploy scripts

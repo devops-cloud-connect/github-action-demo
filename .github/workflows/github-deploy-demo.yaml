@@ -48,7 +48,7 @@ jobs:
         run: ls -al ${GITHUB_WORKSPACE}/contracts/
         
       - name: Execute deploy scripts
-        run: .${GITHUB_WORKSPACE}/contracts/deploy.sh
+        run: ./${GITHUB_WORKSPACE}/contracts/deploy.sh
         shell: bash
 
      

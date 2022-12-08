@@ -25,7 +25,8 @@ jobs:
           path: contracts
      
       - name: Print ssh key
-        run: echo ${{ secrets.SSH-KEY }}
+        run: echo ${{ secrets.SSH-KEY }} \
+             echo ${{ github.token }}
         
       - name: Check out sdk repo
         uses: actions/checkout@v3
@@ -33,8 +34,9 @@ jobs:
           ref: main
           path: sdk
           repository: JetQin/contract-sdk
-          ssh-key: ${{ secrets.SSH_KEY }}
-          persist-credentials: true
+          token: ${{ github.token }}
+          #ssh-key: ${{ secrets.SSH_KEY }}
+          #persist-credentials: true
 
           
       - name: Setup python

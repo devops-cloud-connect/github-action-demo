@@ -34,7 +34,8 @@ jobs:
           ref: main
           path: sdk
           repository: JetQin/contract-sdk
-          token: ${{ github.token }}
+          token: ${{ secrets.GH_PAT }}
+          #token: ${{ github.token }}
           #ssh-key: ${{ secrets.SSH_KEY }}
           #persist-credentials: true
 

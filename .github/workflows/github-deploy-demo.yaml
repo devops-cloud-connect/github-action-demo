@@ -21,11 +21,14 @@ jobs:
     steps:
       - name: Checkout contracts
         uses: actions/checkout@v3
+        with:
+          path: contracts
       
       - name: Check out sdk repo
         uses: actions/checkout@v3
         with:
           ref: main
+          path: contracts
           repository: JetQin/contract-sdk
 
           

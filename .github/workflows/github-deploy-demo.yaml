@@ -16,7 +16,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  setup:
+  prepare_env:
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout contracts
@@ -31,7 +31,7 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         
       - name: Test printing your secret (Remove this step in production)
-        run: cat $HOME/secrets/my_secret.json | echo
+        run: cat ${GITHUB_WORKSPACE}/contracts/my_secret.json
 
       - name: Check out sdk repo
         uses: actions/checkout@v3

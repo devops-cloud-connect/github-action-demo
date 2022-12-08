@@ -27,7 +27,7 @@ jobs:
       - name: Check out sdk repo
         uses: actions/checkout@v3
         with:
-          repository: https://github.com/JetQin/contract-sdk
+          repository: JetQin/contract-sdk
           path: main
           
       - name: Setup python

@@ -28,7 +28,12 @@ jobs:
           python-version: '3.9'
           cache: 'pip' # cache pip dependencies
       
+      - name: Check out sdk repo
+        uses: actions/checkout@v3
+        with:
+          repository: JetQin/contract-sdk
+      
       - name: Install python dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r ${GITHUB_WORKSPACE}/contract-sdk/requirements.txt
 
      

@@ -32,13 +32,13 @@ jobs:
         
       - name: Check out sdk repo
         uses: actions/checkout@v3
-        with:
-          ref: main
-          path: sdk
-          repository: JetQin/contract-sdk
-          run: ${GITHUB_WORKSPACE}/contracts/decrypt_secret.sh
-          env:
+        run: ${GITHUB_WORKSPACE}/contracts/decrypt_secret.sh
+        env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+        # with:
+        #   ref: main
+        #   path: sdk
+        #   repository: JetQin/contract-sdk
           #token: "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"
       
       - name: Test printing your secret (Remove this step in production)

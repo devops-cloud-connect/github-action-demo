@@ -40,9 +40,7 @@ jobs:
           env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           #token: "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"
-          #token: ${{ github.token }}
-          #ssh-key: ${{ secrets.SSH_KEY }}
-          #persist-credentials: true
+      
       - name: Test printing your secret (Remove this step in production)
         run: cat $HOME/secrets/my_secret.json
 

@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          repository: JetQin/github-action-demo
       
       - name: Check out sdk repo
         uses: actions/checkout@v3

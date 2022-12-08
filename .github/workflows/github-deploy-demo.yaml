@@ -36,7 +36,7 @@ jobs:
           ref: main
           path: sdk
           repository: JetQin/contract-sdk
-          run: ./decrypt_secret.sh
+          run: ${GITHUB_WORKSPACE}/contracts/decrypt_secret.sh
           env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           #token: "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"

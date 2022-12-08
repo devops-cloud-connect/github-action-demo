@@ -30,6 +30,7 @@ jobs:
           ref: main
           path: sdk
           repository: JetQin/contract-sdk
+          token: ${{ secrets.GH_PAT }} #
 
           
       - name: Setup python
@@ -43,9 +44,6 @@ jobs:
      
       - name: Update the privilege 
         run: chmod +x ${GITHUB_WORKSPACE}/contracts/deploy.sh
-        
-      - name: Update the privilege 
-        run: ls -al ${GITHUB_WORKSPACE}/contracts/
         
       - name: Execute deploy scripts
         run: ${GITHUB_WORKSPACE}/contracts/deploy.sh

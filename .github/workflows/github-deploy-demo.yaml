@@ -46,5 +46,6 @@ jobs:
         
       - name: Execute deploy scripts
         run: ./${GITHUB_WORKSPACE}/contracts/deploy.sh
+        shell: bash
 
      

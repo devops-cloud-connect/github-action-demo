@@ -22,12 +22,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: JetQin/github-action-demo
+          path: main
       
       - name: Check out sdk repo
         uses: actions/checkout@v3
         with:
           repository: JetQin/contract-sdk
+          path: main
           
       - name: Setup python
         uses: actions/setup-python@v4

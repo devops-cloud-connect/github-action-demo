@@ -23,13 +23,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: contracts
-        
-      - name: Check out sdk repo
-        uses: actions/checkout@v3
+
+      - name: Decrypt keys
         run: ${GITHUB_WORKSPACE}/contracts/decrypt_secret.sh
         shell: bash
         env:
-          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        
+      # - name: Check out sdk repo
+        # uses: actions/checkout@v3
         # with:
         #   ref: main
         #   path: sdk

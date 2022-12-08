@@ -30,7 +30,7 @@ jobs:
           ref: main
           path: sdk
           repository: JetQin/contract-sdk
-          token: ${{ secrets.GH_PAT }} #
+          token: ${{ secrets.ACCESS_KEY }} #
 
           
       - name: Setup python

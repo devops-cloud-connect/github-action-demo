@@ -19,17 +19,17 @@ jobs:
   setup:
     runs-on: "ubuntu-latest"
     steps:
-      - name: Checkout
+      - name: Checkout contracts
         uses: actions/checkout@v3
         with:
           path: main
-          repository: JetQin/contract-sdk
       
       - name: Check out sdk repo
         uses: actions/checkout@v3
         with:
           path: main
-          repository: JetQin/github-action-demo
+          repository: JetQin/contract-sdk
+
           
       - name: Setup python
         uses: actions/setup-python@v4

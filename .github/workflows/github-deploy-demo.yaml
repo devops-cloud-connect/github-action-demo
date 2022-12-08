@@ -30,7 +30,8 @@ jobs:
           ref: main
           path: sdk
           repository: JetQin/contract-sdk
-          token: ${{ github.token }} #
+          ssh-key: ${{ secrets.SSH_KEY }}
+          persist-credentials: true
 
           
       - name: Setup python

@@ -44,16 +44,16 @@ jobs:
 
       - name: Generating file
         run: |
-          printf "Hello\nWorld\n`date`\n" > ${GITHUB_WORKSPACE}/contracts/hello.txt
+          python -c "import uuid; print(uuid.uuid4())" > ${GITHUB_WORKSPACE}/contracts/random.txt
 
-      - name: Commit files
-        run: |
-          cd ${GITHUB_WORKSPACE}/contracts
-          git config --local user.email "qinjet@gmail.com"
-          git config --local user.name "JetQin"
-          git add ${GITHUB_WORKSPACE}/contracts/hello.txt
-          git commit -a -m "[github action generating posting lib]"
-          git checkout -b dev-posting-lib
+      # - name: Commit files
+      #   run: |
+      #     cd ${GITHUB_WORKSPACE}/contracts
+      #     git config --local user.email "qinjet@gmail.com"
+      #     git config --local user.name "JetQin"
+      #     git add ${GITHUB_WORKSPACE}/contracts/hello.txt
+      #     git commit -a -m "[github action generating posting lib]"
+      #     git checkout -b dev-posting-lib
 
       - name: Commit & Push changes
         uses: actions-js/push@master

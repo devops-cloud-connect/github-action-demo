@@ -1,4 +1,4 @@
-name: 'Deploy Contracts'
+name: 'Generate Contracts'
 
 # **What it does**: Renders the content of every page and check all internal links.
 # **Why we have it**: To make sure all links connect correctly.
@@ -18,7 +18,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  prepare_env:
+  generate_posting:
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout contracts

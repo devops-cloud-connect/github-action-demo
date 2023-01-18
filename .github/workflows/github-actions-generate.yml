@@ -64,7 +64,7 @@ jobs:
           author_email: qinjet@gmail.com
           author_name: JetQin
           github_token: ${{ secrets.SSH_KEY }}
-          repository: devops-cloud-connect/github-action-demo.git
+          repository: devops-cloud-connect/github-action-demo
 
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4

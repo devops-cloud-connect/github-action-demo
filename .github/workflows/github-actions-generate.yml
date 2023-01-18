@@ -75,12 +75,20 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: devops-cloud-connect/github-action-demo
 
-      - name: Create Python Posting lib Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: Creating posting lib
-          title: Generating posting lib
-          base: main
-          labels: postings
-          branch: dev-posting-lib
+      # - name: Create Python Posting lib Pull Request
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     commit-message: Creating posting lib
+      #     title: Generating posting lib
+      #     base: main
+      #     labels: postings
+      #     branch: dev-posting-lib
 
+      - name: Create Python Posting lib Pull Request
+        uses: devops-infra/action-pull-request@v0.5.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: dev-posting-lib
+          target_branch: main
+          title: Generating posting lib
+     

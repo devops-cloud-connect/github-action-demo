@@ -11,7 +11,10 @@ on:
       - main
     path:
       - src/**
-permissions: write-all
+permissions: 
+  contents: write
+  pull-requests: write
+  repository-projects: write
 
 jobs:
   generate_posting:
@@ -55,6 +58,7 @@ jobs:
       #     git commit -a -m "[github action generating posting lib]"
       #     git checkout -b dev-posting-lib
       #     git push origin dev-posting-lib 
+      
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:

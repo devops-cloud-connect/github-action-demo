@@ -65,6 +65,7 @@ jobs:
 
       - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
         run: |
+          cd ${GITHUB_WORKSPACE}/contracts
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
           git add ${GITHUB_WORKSPACE}/contracts/random.txt

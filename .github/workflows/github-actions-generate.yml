@@ -49,8 +49,8 @@ jobs:
       - name: Commit files
         run: |
           cd ${GITHUB_WORKSPACE}/contracts
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "qinjet@gmail.com"
+          git config --local user.name "JetQin"
           git add ${GITHUB_WORKSPACE}/contracts/hello.txt
           git commit -a -m "[github action generating posting lib]"
           git checkout -b dev-posting-lib

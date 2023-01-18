@@ -30,6 +30,10 @@ jobs:
       - name: Checkout python version
         run: python -V
 
+      - name: Checkout python version
+        run: pip install -r ${GITHUB_WORKSPACE}/contracts/requirements.txt
+
+
       - name: Update the privilege 
         run: chmod +x ${GITHUB_WORKSPACE}/contracts/deploy.sh
         
@@ -39,7 +43,7 @@ jobs:
 
       - name: Generating file
         run: |
-          printf "Hello\nWorld\n" > ${GITHUB_WORKSPACE}/contracts/hello.txt
+          printf "Hello\nWorld\n`date`\n" > ${GITHUB_WORKSPACE}/contracts/hello.txt
 
       - name: Commit files
         run: |
@@ -47,7 +51,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add ${GITHUB_WORKSPACE}/contracts/hello.txt
-          git commit -a -m "Add changes"
+          git commit -a -m "[github action generating posting lib]"
           git fetch
           git push -f origin main
       

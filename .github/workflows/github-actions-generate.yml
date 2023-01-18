@@ -84,5 +84,6 @@ jobs:
         source_branch: dev-posting-lib-${{ github.sha }}
         target_branch: main
         title: Generating posting lib
-        assignee: ${{ github.actor }}
+        reviewer: ${{ github.actor }}
+        label: smart-contracts
         get_diff: true

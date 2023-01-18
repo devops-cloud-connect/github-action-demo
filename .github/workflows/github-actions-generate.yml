@@ -65,7 +65,7 @@ jobs:
 
       - name: print log
         run: |
-          echo hello      
+          echo hello v1     
 
       - name: Commit & Push changes
         uses: actions-js/push@master

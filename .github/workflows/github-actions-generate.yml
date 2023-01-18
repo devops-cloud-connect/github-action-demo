@@ -46,25 +46,32 @@ jobs:
         run: |
           python -c "import uuid; print(uuid.uuid4())" > ${GITHUB_WORKSPACE}/contracts/random.txt
 
-      # - name: Commit files
-      #   run: |
-      #     cd ${GITHUB_WORKSPACE}/contracts
-      #     git config --local user.email "qinjet@gmail.com"
-      #     git config --local user.name "JetQin"
-      #     git remote set-url origin git@github.com:devops-cloud-connect/github-action-demo.git
-      #     git add ${GITHUB_WORKSPACE}/contracts/hello.txt
-      #     git commit -a -m "[github action generating posting lib]"
-      #     git checkout -b dev-posting-lib
-
-      - name: Commit & Push changes
-        uses: actions-js/push@master
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          directory: contracts
-          branch: dev-posting-lib
-          author_email: qinjet@gmail.com
-          author_name: JetQin
-          github_token: ${{ secrets.SSH_KEY }}
-          repository: devops-cloud-connect/github-action-demo
+          key: ${{ secrets.SSH_KEY }} 
+          known_hosts: '*github.com'
+
+      - name: Commit files
+        run: |
+          cd ${GITHUB_WORKSPACE}/contracts
+          git config --local user.email "qinjet@gmail.com"
+          git config --local user.name "JetQin"
+          git remote set-url origin git@github.com:devops-cloud-connect/github-action-demo.git
+          git add ${GITHUB_WORKSPACE}/contracts/hello.txt
+          git commit -a -m "[github action generating posting lib]"
+          git checkout -b dev-posting-lib
+          git push origin dev-posting-lib
+
+      # - name: Commit & Push changes
+      #   uses: actions-js/push@master
+      #   with:
+      #     directory: contracts
+      #     branch: dev-posting-lib
+      #     author_email: qinjet@gmail.com
+      #     author_name: JetQin
+      #     github_token: ${{ secrets.SSH_KEY }}
+      #     repository: devops-cloud-connect/github-action-demo
 
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4

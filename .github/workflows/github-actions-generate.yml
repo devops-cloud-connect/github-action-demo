@@ -11,9 +11,7 @@ on:
       - main
     path:
       - src/**
-permissions: 
-  pull-requests: write
-  repository-projects: write
+permissions: write-all
 
 jobs:
   generate_posting:

@@ -10,7 +10,7 @@ on:
     branches:
       - main
     path:
-      - src/**
+      - .github/workflows/github-deploy-demo.yaml
 
 permissions:
   contents: read

@@ -65,6 +65,7 @@ jobs:
 
 
   create_posting_pull_request: 
+    needs: generate_posting
     runs-on: "ubuntu-latest"
     steps:
     - name: Checkout contracts

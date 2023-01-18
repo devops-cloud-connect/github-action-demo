@@ -43,6 +43,7 @@ jobs:
 
       - name: Commit files # transfer the postings.py to repo
         run: |
+          cd ${GITHUB_WORKSPACE}/source/contracts/
           git add ${GITHUB_WORKSPACE}/source/contracts/hello.txt
           git commit -m "add postings file"
 

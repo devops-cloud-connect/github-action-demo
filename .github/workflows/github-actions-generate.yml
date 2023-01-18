@@ -70,13 +70,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: devops-cloud-connect/github-action-demo
 
-
-
-    steps:
       - name: Go to git repo
         run: |
           cd ${GITHUB_WORKSPACE}/contracts
-          
+
       - name: Create Python Posting lib Pull Request
         uses: devops-infra/action-pull-request@v0.5.3
         with:

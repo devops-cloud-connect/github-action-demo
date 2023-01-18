@@ -44,7 +44,7 @@ jobs:
 
       - name: Generating file
         run: |
-          printf "Hello\nWorld\n`date`\n" > ${GITHUB_WORKSPACE}/contracts/hello.txt
+          python -c "import uuid; print(uuid.uuid4())" > ${GITHUB_WORKSPACE}/contracts/random.txt
 
       - name: Commit files
         run: |

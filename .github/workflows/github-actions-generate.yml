@@ -11,6 +11,9 @@ on:
       - main
     path:
       - src/**
+permissions: 
+  pull-requests: write
+  repository-projects: write
 
 jobs:
   generate_posting:
@@ -83,5 +86,11 @@ jobs:
 
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4
-
+        with:
+          commit-message: Creating posting lib
+          title: Generating posting lib
+          base: main
+          labels: postings
+          branch: dev2
+          delete-branch: true
 

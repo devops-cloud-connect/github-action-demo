@@ -47,11 +47,11 @@ jobs:
         run: |
           python -c "import uuid; print(uuid.uuid4())" > ${GITHUB_WORKSPACE}/contracts/random.txt
 
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_KEY }} 
-          known_hosts: 'github.com'
+      # - name: Install SSH Key
+      #   uses: shimataro/ssh-key-action@v2
+      #   with:
+      #     key: ${{ secrets.SSH_KEY }} 
+      #     known_hosts: 'github.com'
 
       # - name: Commit files
       #   run: |
@@ -63,23 +63,23 @@ jobs:
       #     git checkout -b dev-posting-lib
       #     git push origin dev-posting-lib
 
-      - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
-        run: |
-          cd ${GITHUB_WORKSPACE}/contracts
-          git config --global user.name "Jet"
-          git config --global user.email "qinjet@gmail.com"
-          git add ${GITHUB_WORKSPACE}/contracts/random.txt
-          git commit -a -m "generating post lib"
-          git checkout -b dev-posting-lib
-          git push --set-upstream origin dev-posting-lib
+      # - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
+      #   run: |
+      #     cd ${GITHUB_WORKSPACE}/contracts
+      #     git config --global user.name "Jet"
+      #     git config --global user.email "qinjet@gmail.com"
+      #     git add ${GITHUB_WORKSPACE}/contracts/random.txt
+      #     git commit -a -m "generating post lib"
+      #     git checkout -b dev-posting-lib
+      #     git push --set-upstream origin dev-posting-lib
 
-      # - name: Commit & Push changes
-      #   uses: actions-js/push@master
-      #   with:
-      #     directory: contracts
-      #     branch: dev-posting-lib
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     repository: devops-cloud-connect/github-action-demo
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          directory: contracts
+          branch: dev-posting-lib
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: devops-cloud-connect/github-action-demo
 
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4

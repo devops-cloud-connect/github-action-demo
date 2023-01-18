@@ -38,22 +38,18 @@ jobs:
         shell: bash
 
       - name: Generating file
-        run: echo "Hello" > ${GITHUB_WORKSPACE}/contracts/hello.txt
-        shell: bash
+        run: |
+          printf "Hello\nWorld\n" > ${GITHUB_WORKSPACE}/contracts/hello.txt
 
       - name: Commit files # transfer the postings.py to repo
         run: |
           cd ${GITHUB_WORKSPACE}/contracts/
+          git remote set-url origin ${{ secrets.ssh }}
           git config --local user.email "qinjet@gmail.com"
           git config --local user.name "Jet Qin"
           git add ${GITHUB_WORKSPACE}/contracts/hello.txt
           git commit -m "add postings file"
-
-      - name: Push changes # push the postings to your repo
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force_with_lease: true
-
+          git fetch origin master
+          git push origin HEAD:master
 
 

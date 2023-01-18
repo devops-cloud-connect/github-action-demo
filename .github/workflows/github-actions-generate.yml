@@ -1,0 +1,71 @@
+name: 'Deploy Contracts'
+
+# **What it does**: Renders the content of every page and check all internal links.
+# **Why we have it**: To make sure all links connect correctly.
+# **Who does it impact**: Docs content.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    path:
+      - src/**
+
+permissions:
+  contents: read
+  # Needed for the 'trilom/file-changes-action' action
+  pull-requests: read
+
+jobs:
+  prepare_env:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout contracts
+        uses: actions/checkout@v3
+        with:
+          path: contracts
+
+      - name: Decrypt keys
+        run: ${GITHUB_WORKSPACE}/contracts/decrypt_secret.sh
+        shell: bash
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        
+      - name: Test printing your secret (Remove this step in production)
+        run: cat ${GITHUB_WORKSPACE}/contracts/my_secret.json
+          
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip' # cache pip dependencies
+      
+      - name: Checkout python version
+        run: python -V
+
+      - name: Update the privilege 
+        run: chmod +x ${GITHUB_WORKSPACE}/contracts/deploy.sh
+        
+      - name: Execute deploy scripts
+        run: ${GITHUB_WORKSPACE}/contracts/deploy.sh
+        shell: bash
+
+      - name: Generating file
+        run: echo "Hello" > ${GITHUB_WORKSPACE}/contracts/hello.txt
+        shell: bash
+
+       - name: Commit files # transfer the postings.py to repo
+        run: |
+          git add ${GITHUB_WORKSPACE}/source/contracts/hello.txt
+          git commit -m "add postings file"
+
+      - name: Push changes # push the postings to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+
+
+
+

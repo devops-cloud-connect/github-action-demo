@@ -52,8 +52,8 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add ${GITHUB_WORKSPACE}/contracts/hello.txt
           git commit -a -m "[github action generating posting lib]"
-          git fetch
-          git push 
+          git checkout -b dev-posting-lib
+          git push -f origin dev-posting-lib
       
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4

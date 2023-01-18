@@ -89,6 +89,5 @@ jobs:
           title: Generating posting lib
           base: main
           labels: postings
-          branch: dev2
-          delete-branch: true
+          branch: dev-posting-lib
 

@@ -68,9 +68,7 @@ jobs:
         with:
           directory: contracts
           branch: dev-posting-lib
-          author_email: qinjet@gmail.com
-          author_name: JetQin
-          github_token: ${{ secrets.SSH_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: devops-cloud-connect/github-action-demo
 
       - name: Create Python Posting lib Pull Request

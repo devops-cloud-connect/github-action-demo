@@ -76,6 +76,9 @@ jobs:
     steps:
     - name: Checkout contracts
       uses: actions/checkout@v3
+    - name:
+      run: |
+        ls -al ${GITHUB_WORKSPACE}
 
     - name: Create Python Posting lib Pull Request
       uses: devops-infra/action-pull-request@v0.5.3

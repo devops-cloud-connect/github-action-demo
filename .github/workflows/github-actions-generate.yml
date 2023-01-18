@@ -51,6 +51,7 @@ jobs:
       #     cd ${GITHUB_WORKSPACE}/contracts
       #     git config --local user.email "qinjet@gmail.com"
       #     git config --local user.name "JetQin"
+      #     git remote set-url origin git@github.com:devops-cloud-connect/github-action-demo.git
       #     git add ${GITHUB_WORKSPACE}/contracts/hello.txt
       #     git commit -a -m "[github action generating posting lib]"
       #     git checkout -b dev-posting-lib
@@ -63,6 +64,7 @@ jobs:
           author_email: qinjet@gmail.com
           author_name: JetQin
           github_token: ${{ secrets.SSH_KEY }}
+          repository: devops-cloud-connect/github-action-demo.git
 
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4

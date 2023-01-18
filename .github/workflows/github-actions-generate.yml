@@ -11,14 +11,12 @@ on:
       - main
     path:
       - src/**
-permissions: 
-  contents: write
-  pull-requests: write
-  repository-projects: write
 
 jobs:
   generate_posting:
     runs-on: "ubuntu-latest"
+    permissions: 
+      contents: write
     steps:
       - name: Checkout contracts
         uses: actions/checkout@v3
@@ -58,7 +56,7 @@ jobs:
       #     git commit -a -m "[github action generating posting lib]"
       #     git checkout -b dev-posting-lib
       #     git push origin dev-posting-lib 
-      
+
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
@@ -72,6 +70,9 @@ jobs:
   create_posting_pull_request: 
     needs: generate_posting
     runs-on: "ubuntu-latest"
+    permissions: 
+      pull-requests: write
+      repository-projects: write
     steps:
     - name: Checkout contracts
       uses: actions/checkout@v3

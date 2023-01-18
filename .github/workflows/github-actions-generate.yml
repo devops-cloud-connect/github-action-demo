@@ -12,10 +12,6 @@ on:
     path:
       - src/**
 
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
   generate_posting:
     runs-on: "ubuntu-latest"
@@ -45,7 +41,7 @@ jobs:
         run: echo "Hello" > ${GITHUB_WORKSPACE}/contracts/hello.txt
         shell: bash
 
-       - name: Commit files # transfer the postings.py to repo
+      - name: Commit files # transfer the postings.py to repo
         run: |
           git add ${GITHUB_WORKSPACE}/source/contracts/hello.txt
           git commit -m "add postings file"

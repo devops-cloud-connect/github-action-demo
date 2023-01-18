@@ -62,6 +62,7 @@ jobs:
           branch: dev-posting-lib-${{ github.sha }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: devops-cloud-connect/github-action-demo
+          message: '[github action generating posting lib ${date}]'
 
 
   create_posting_pull_request: 

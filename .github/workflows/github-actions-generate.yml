@@ -69,7 +69,7 @@ jobs:
           git config --global user.name "JetQin"
           git config --global user.email "qinjet@gmail.com"
           git add ${GITHUB_WORKSPACE}/contracts/random.txt
-          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git commit -a -m "generating post lib"
           git checkout -b dev-posting-lib
           git push
 

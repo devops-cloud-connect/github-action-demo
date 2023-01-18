@@ -50,14 +50,13 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_KEY }} 
-          known_hosts: '*github.com'
+          known_hosts: 'github.com'
 
       - name: Commit files
         run: |
           cd ${GITHUB_WORKSPACE}/contracts
-          git config --local user.email "qinjet@gmail.com"
-          git config --local user.name "JetQin"
-          git remote set-url origin git@github.com:devops-cloud-connect/github-action-demo.git
+          git config --global user.email "qinjet@gmail.com"
+          git config --global user.name "JetQin"
           git add ${GITHUB_WORKSPACE}/contracts/random.txt
           git commit -a -m "[github action generating posting lib]"
           git checkout -b dev-posting-lib

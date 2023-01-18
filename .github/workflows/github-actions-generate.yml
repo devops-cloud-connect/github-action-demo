@@ -46,12 +46,6 @@ jobs:
         run: |
           python -c "import uuid; print(uuid.uuid4())" > ${GITHUB_WORKSPACE}/contracts/random.txt
 
-      # - name: Install SSH Key
-      #   uses: shimataro/ssh-key-action@v2
-      #   with:
-      #     key: ${{ secrets.SSH_KEY }} 
-      #     known_hosts: 'github.com'
-
       # - name: Commit files
       #   run: |
       #     cd ${GITHUB_WORKSPACE}/contracts
@@ -60,8 +54,7 @@ jobs:
       #     git add ${GITHUB_WORKSPACE}/contracts/random.txt
       #     git commit -a -m "[github action generating posting lib]"
       #     git checkout -b dev-posting-lib
-      #     git push origin dev-posting-lib  
-
+      #     git push origin dev-posting-lib 
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
@@ -70,17 +63,20 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: devops-cloud-connect/github-action-demo
 
-      - name: Go to git repo
-        run: |
-          cd ${GITHUB_WORKSPACE}/contracts
 
-      - name: Create Python Posting lib Pull Request
-        uses: devops-infra/action-pull-request@v0.5.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: dev-posting-lib-${{ github.sha }}
-          target_branch: main
-          title: Generating posting lib
-          assignee: ${{ github.actor }}
-          get_diff: true
-     
+  create_posting_pull_request: 
+    runs-on: "ubuntu-latest"
+    steps:
+    - name: Checkout contracts
+      uses: actions/checkout@v3
+
+    - name: Create Python Posting lib Pull Request
+      uses: devops-infra/action-pull-request@v0.5.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        source_branch: dev-posting-lib-${{ github.sha }}
+        target_branch: main
+        title: Generating posting lib
+        assignee: ${{ github.actor }}
+        get_diff: true
+    

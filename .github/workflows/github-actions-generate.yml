@@ -71,7 +71,7 @@ jobs:
         uses: actions-js/push@master
         with:
           directory: contracts
-          branch: dev-posting-lib-${{GITHUB_SHA}}
+          branch: dev-posting-lib-${{ env.GITHUB_SHA }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository: devops-cloud-connect/github-action-demo
 
@@ -88,7 +88,7 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: dev-posting-lib-${{GITHUB_SHA}}
+          source_branch: dev-posting-lib-${{ env.GITHUB_SHA }}
           target_branch: main
           title: Generating posting lib
      

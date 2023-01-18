@@ -77,24 +77,25 @@ jobs:
     - name: Checkout contracts
       uses: actions/checkout@v3
     
-    # - name: Update pull request cli
-    #   run: |
-    #     apt install -y hub
-
-    # - name: Create Python Posting lib Pull Request
-    #   uses: devops-infra/action-pull-request@v0.5.3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     source_branch: dev-posting-lib-${{ github.sha }}
-    #     target_branch: main
-    #     title: Generating posting lib
-    #     assignee: ${{ github.actor }}
-    #     get_diff: true
+    - name: Update pull request cli
+      run: |
+        apt update
+        apt install -y hub
 
     - name: Create Python Posting lib Pull Request
-      uses: peter-evans/create-pull-request@v4
+      uses: devops-infra/action-pull-request@v0.5.3
       with:
-        branch: dev-posting-lib-${{ github.sha }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        source_branch: dev-posting-lib-${{ github.sha }}
+        target_branch: main
         title: Generating posting lib
-        reviewers: ${{ github.actor }}
-        labels: devops
+        assignee: ${{ github.actor }}
+        get_diff: true
+
+    # - name: Create Python Posting lib Pull Request
+    #   uses: peter-evans/create-pull-request@v4
+    #   with:
+    #     branch: dev-posting-lib-${{ github.sha }}
+    #     title: Generating posting lib
+    #     reviewers: ${{ github.actor }}
+    #     labels: devops

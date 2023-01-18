@@ -63,16 +63,6 @@ jobs:
       #     git checkout -b dev-posting-lib
       #     git push origin dev-posting-lib
 
-      # - name: GIT Commit Build Artifacts (coverage, dist, devdist, docs)
-      #   run: |
-      #     cd ${GITHUB_WORKSPACE}/contracts
-      #     git config --global user.name "Jet"
-      #     git config --global user.email "qinjet@gmail.com"
-      #     git add ${GITHUB_WORKSPACE}/contracts/random.txt
-      #     git commit -a -m "generating post lib"
-      #     git checkout -b dev-posting-lib
-      #     git push --set-upstream origin dev-posting-lib
-
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:

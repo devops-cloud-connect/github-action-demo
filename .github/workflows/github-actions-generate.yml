@@ -19,7 +19,8 @@ jobs:
       - name: Checkout contracts
         uses: actions/checkout@v3
         with:
-          fetch-depth: '0'
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # 
           path: contracts
           
       - name: Setup python
@@ -52,25 +53,25 @@ jobs:
           key: ${{ secrets.SSH_KEY }} 
           known_hosts: 'github.com'
 
-      - name: Commit files
-        run: |
-          cd ${GITHUB_WORKSPACE}/contracts
-          git config --global user.email "qinjet@gmail.com"
-          git config --global user.name "JetQin"
-          git add ${GITHUB_WORKSPACE}/contracts/random.txt
-          git commit -a -m "[github action generating posting lib]"
-          git checkout -b dev-posting-lib
-          git push origin dev-posting-lib
+      # - name: Commit files
+      #   run: |
+      #     cd ${GITHUB_WORKSPACE}/contracts
+      #     git config --global user.email "qinjet@gmail.com"
+      #     git config --global user.name "JetQin"
+      #     git add ${GITHUB_WORKSPACE}/contracts/random.txt
+      #     git commit -a -m "[github action generating posting lib]"
+      #     git checkout -b dev-posting-lib
+      #     git push origin dev-posting-lib
 
-      # - name: Commit & Push changes
-      #   uses: actions-js/push@master
-      #   with:
-      #     directory: contracts
-      #     branch: dev-posting-lib
-      #     author_email: qinjet@gmail.com
-      #     author_name: JetQin
-      #     github_token: ${{ secrets.SSH_KEY }}
-      #     repository: devops-cloud-connect/github-action-demo
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          directory: contracts
+          branch: dev-posting-lib
+          author_email: qinjet@gmail.com
+          author_name: JetQin
+          github_token: ${{ secrets.SSH_KEY }}
+          repository: devops-cloud-connect/github-action-demo
 
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4

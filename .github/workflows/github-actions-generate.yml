@@ -14,7 +14,6 @@ on:
 
 permissions:
   contents: read
-  # Needed for the 'trilom/file-changes-action' action
   pull-requests: read
 
 jobs:
@@ -25,15 +24,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: contracts
-
-      - name: Decrypt keys
-        run: ${GITHUB_WORKSPACE}/contracts/decrypt_secret.sh
-        shell: bash
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        
-      - name: Test printing your secret (Remove this step in production)
-        run: cat ${GITHUB_WORKSPACE}/contracts/my_secret.json
           
       - name: Setup python
         uses: actions/setup-python@v4

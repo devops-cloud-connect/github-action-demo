@@ -44,8 +44,8 @@ jobs:
       - name: Commit files # transfer the postings.py to repo
         run: |
           cd ${GITHUB_WORKSPACE}/contracts/
-          git config --global user.email "qinjet@gmail.com"
-          git config --global user.name "Jet Qin"
+          git config --local user.email "qinjet@gmail.com"
+          git config --local user.name "Jet Qin"
           git add ${GITHUB_WORKSPACE}/contracts/hello.txt
           git commit -m "add postings file"
 

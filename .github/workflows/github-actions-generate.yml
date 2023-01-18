@@ -54,8 +54,12 @@ jobs:
           git add ${GITHUB_WORKSPACE}/contracts/hello.txt
           git commit -a -m "[github action generating posting lib]"
           git checkout -b dev-posting-lib
-          git push -f origin dev-posting-lib
-      
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Python Posting lib Pull Request
         uses: peter-evans/create-pull-request@v4
 

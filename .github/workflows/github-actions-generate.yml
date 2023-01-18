@@ -63,6 +63,10 @@ jobs:
       #     git checkout -b dev-posting-lib
       #     git push origin dev-posting-lib
 
+      - name: print log
+        run: |
+          echo hello      
+
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
